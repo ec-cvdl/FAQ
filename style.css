@@ -88,3 +88,7 @@ footer {
   background: #f0f0f0;
   margin-top: 2rem;
 }
+
+.teal .icon { color: #00bfb3; }
+.red .icon { color: #ef476f; }
+.yellow .icon { color: #ffc107; }
