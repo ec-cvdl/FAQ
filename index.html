@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistance Informatique</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Assistance Informatique</h1>
+  </header>
+
+  <main>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+          Comment réinitialiser mon mot de passe ?
+        </button>
+        <div id="faq1" class="faq-answer" role="region" aria-hidden="true">
+          Cliquez sur « Mot de passe oublié » sur la page de connexion pour en générer un nouveau.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          Comment installer un antivirus ?
+        </button>
+        <div id="faq2" class="faq-answer" role="region" aria-hidden="true">
+          Nous recommandons d’installer un antivirus depuis notre lien officiel ou un magasin d’applications de confiance.
+        </div>
+      </div>
+
+      <!-- Ajoutez d'autres questions ici -->
+    </section>
+
+    <button id="open-modal" class="assist-button">Besoin d’aide personnalisée ?</button>
+
+    <div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
+      <div class="modal-content">
+        <h3 id="modal-title">Aide personnalisée</h3>
+        <p>Indiquez votre problème ci‑dessous :</p>
+        <textarea id="modal-input" rows="4" placeholder="Décrivez votre problème ici..."></textarea>
+        <button id="close-modal">Envoyer</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Assistance Informatique</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
