@@ -1,14 +1,14 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background: #f5f5f5;
+  background: #f8f8f8;
   color: #222;
 }
 
 header {
   text-align: center;
-  padding: 2rem 1rem;
-  background: #ffffff;
+  padding: 2rem;
+  background: white;
 }
 
 h1 {
@@ -16,79 +16,63 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 1rem;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
 .card {
   background: white;
-  font-size: 1.1rem;
-  padding: 2.5rem 2rem;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
 }
 
 .icon {
   font-size: 3rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #ef476f;
 }
 
-.teal .icon { color: #00bfb3; }
-.red .icon { color: #ef476f; }
-.yellow .icon { color: #ffc107; }
-
-#assistant {
-  margin-top: 3rem;
+.solution {
+  background: white;
+  margin: 2rem auto;
+  max-width: 600px;
   padding: 2rem;
-  background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: left;
 }
 
-.question, .solution {
-  margin-top: 1.5rem;
-}
-
-#assistant button {
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.7rem 1.4rem;
+button.back {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 1.5rem;
   background: #00bfb3;
   color: white;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
-#assistant button:hover {
+button.back:hover {
   background: #009a91;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  color: #555;
-  background: #f0f0f0;
+  font-size: 0.9rem;
+  background: #eee;
   margin-top: 2rem;
 }
-
-.teal .icon { color: #00bfb3; }
-.red .icon { color: #ef476f; }
-.yellow .icon { color: #ffc107; }
