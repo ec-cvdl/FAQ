@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistance Informatique</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0e7490" />
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="max-w-5xl mx-auto p-8">
+    <h1 class="text-4xl font-extrabold text-cyan-600 text-center mb-4">Assistance Informatique</h1>
+    <p class="text-center text-gray-600 mb-10 text-lg">Comment puis-je vous aider aujourd'hui ?</p>
+
+    <!-- Choix du problème -->
+    <div id="categories" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-cyan-500 hover:bg-cyan-50 transition" onclick="openDecision('connexion')">
+        <i class="fa-solid fa-wifi text-cyan-500 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Connexion</h2>
+        <p class="text-lg text-gray-500 text-center">Mot de passe, WiFi, Internet</p>
+      </button>
+
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-rose-500 hover:bg-rose-50 transition" onclick="openDecision('systeme')">
+        <i class="fa-solid fa-desktop text-rose-500 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Système</h2>
+        <p class="text-lg text-gray-500 text-center">Démarrage, mises à jour, erreurs</p>
+      </button>
+
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-yellow-400 hover:bg-yellow-50 transition" onclick="openDecision('materiel')">
+        <i class="fa-solid fa-microchip text-yellow-400 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Matériel</h2>
+        <p class="text-lg text-gray-500 text-center">Batterie, écran, clavier</p>
+      </button>
+
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-green-500 hover:bg-green-50 transition" onclick="openDecision('applications')">
+        <i class="fa-solid fa-table-cells-large text-green-500 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Applications</h2>
+        <p class="text-lg text-gray-500 text-center">Logiciels, installations</p>
+      </button>
+
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-red-500 hover:bg-red-50 transition" onclick="openDecision('securite')">
+        <i class="fa-solid fa-shield-halved text-red-500 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Sécurité</h2>
+        <p class="text-lg text-gray-500 text-center">Virus, confidentialité</p>
+      </button>
+
+      <button class="flex flex-col items-center justify-center h-64 p-8 bg-white shadow-xl rounded-3xl border-t-8 border-indigo-500 hover:bg-indigo-50 transition" onclick="openDecision('peripheriques')">
+        <i class="fa-solid fa-print text-indigo-500 text-8xl mb-4"></i>
+        <h2 class="font-bold text-2xl mb-2">Périphériques</h2>
+        <p class="text-lg text-gray-500 text-center">Imprimantes, scanners</p>
+      </button>
+    </div>
+
+    <!-- Contenu arbre de décision -->
+    <div id="decision" class="mt-12 hidden">
+      <h2 id="decision-title" class="text-3xl font-semibold mb-6 text-center"></h2>
+      <div id="decision-content" class="space-y-6"></div>
+      <div class="text-center mt-8">
+        <button onclick="goBack()" class="px-6 py-3 bg-gray-200 text-lg rounded-2xl hover:bg-gray-300">⬅ Retour</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    const arbres = {
+      connexion: {
+        question: "Quel est le problème de connexion ?",
+        options: {
+          "Impossible de se connecter au WiFi": {
+            question: "Voyez-vous le réseau WiFi dans la liste ?",
+            options: {
+              "Oui": { solution: "Essayez de redémarrer le routeur." },
+              "Non": { solution: "Vérifiez si la carte réseau est activée." }
+            }
+          },
+          "Mot de passe oublié": { solution: "Réinitialisez le mot de passe via votre fournisseur." }
+        }
+      },
+      systeme: {
+        question: "Quel est le problème système ?",
+        options: {
+          "L'ordinateur ne démarre pas": {
+            question: "Entendez-vous un bruit au démarrage ?",
+            options: {
+              "Oui": { solution: "Problème logiciel probable, essayez le mode sans échec." },
+              "Non": { solution: "Problème matériel, contactez le support." }
+            }
+          },
+          "Mises à jour bloquées": { solution: "Relancez Windows Update ou essayez manuellement." }
+        }
+      },
+      materiel: {
+        question: "Quel est le problème matériel ?",
+        options: {
+          "Batterie": { solution: "Essayez un autre chargeur ou remplacez la batterie." },
+          "Écran": { solution: "Vérifiez les branchements, testez avec un autre écran." },
+          "Clavier": { solution: "Nettoyez le clavier, ou testez-en un autre." }
+        }
+      },
+      applications: {
+        question: "Quel est le problème avec l'application ?",
+        options: {
+          "Impossible d'installer": {
+            question: "Avez-vous un message d'erreur ?",
+            options: {
+              "Oui": { solution: "Cherchez le code d'erreur en ligne pour la solution." },
+              "Non": { solution: "Vérifiez l'espace disque disponible." }
+            }
+          },
+          "L'application plante": { solution: "Essayez de réinstaller l'application." }
+        }
+      },
+      securite: {
+        question: "Quel est le problème de sécurité ?",
+        options: {
+          "Ordinateur infecté": {
+            question: "Avez-vous un antivirus installé ?",
+            options: {
+              "Oui": { solution: "Lancez un scan complet." },
+              "Non": { solution: "Installez un antivirus fiable immédiatement." }
+            }
+          },
+          "Problème de confidentialité": { solution: "Vérifiez vos paramètres de confidentialité dans Windows." }
+        }
+      },
+      peripheriques: {
+        question: "Quel est le problème avec le périphérique ?",
+        options: {
+          "Imprimante": {
+            question: "Est-elle bien connectée au réseau ?",
+            options: {
+              "Oui": { solution: "Vérifiez les pilotes et redémarrez le spouleur d'impression." },
+              "Non": { solution: "Connectez l'imprimante au WiFi ou câble USB." }
+            }
+          },
+          "Scanner": { solution: "Assurez-vous que le pilote est installé correctement." }
+        }
+      }
+    };
+
+    let currentPath = [];
+
+    function openDecision(type) {
+      currentPath = [type];
+      document.getElementById('categories').classList.add('hidden');
+      document.getElementById('decision').classList.remove('hidden');
+      renderStep();
+    }
+
+    function renderStep() {
+      let node = arbres;
+      for (let key of currentPath) node = node.options ? node.options[key] : node[key];
+
+      const title = document.getElementById('decision-title');
+      const content = document.getElementById('decision-content');
+      content.innerHTML = '';
+
+      if (node.solution) {
+        title.textContent = "Solution trouvée :";
+        content.innerHTML = `<p class='p-6 bg-green-100 text-green-700 text-xl rounded-2xl'>${node.solution}</p>`;
+      } else {
+        title.textContent = node.question;
+        for (let option in node.options) {
+          const btn = document.createElement('button');
+          btn.textContent = option;
+          btn.className = "block w-full p-6 bg-white rounded-2xl shadow hover:bg-gray-100 text-xl text-left";
+          btn.onclick = () => {
+            currentPath.push(option);
+            renderStep();
+          };
+          content.appendChild(btn);
+        }
+      }
+    }
+
+    function goBack() {
+      if (currentPath.length > 1) {
+        currentPath.pop();
+        renderStep();
+      } else {
+        document.getElementById('decision').classList.add('hidden');
+        document.getElementById('categories').classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
