@@ -106,3 +106,32 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+#assistant {
+  margin-top: 3rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#assistant .question,
+#assistant .solution {
+  margin-top: 1rem;
+}
+
+#assistant button {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 1.2rem;
+  background: var(--teal);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+#assistant button:hover {
+  background: #009a91;
+}
+
