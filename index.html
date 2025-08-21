@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Assistance Informatique</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -14,47 +14,212 @@
   </header>
 
   <main>
+    <!-- Catégories principales -->
     <section class="grid" id="main-categories">
+      <div class="card teal" onclick="selectCategory('connexion')">
+        <i class="fas fa-wifi icon"></i>
+        <h3>Connexion</h3>
+        <p>WiFi, Internet, réseaux</p>
+      </div>
       <div class="card red" onclick="selectCategory('systeme')">
         <i class="fas fa-desktop icon"></i>
         <h3>Système</h3>
         <p>Erreurs, lenteurs, mises à jour</p>
       </div>
-      <!-- Tu pourras ajouter d'autres catégories ici -->
+      <div class="card yellow" onclick="selectCategory('materiel')">
+        <i class="fas fa-tools icon"></i>
+        <h3>Matériel</h3>
+        <p>Écran, clavier, souris</p>
+      </div>
+      <div class="card teal" onclick="selectCategory('applications')">
+        <i class="fas fa-th-large icon"></i>
+        <h3>Applications</h3>
+        <p>Logiciels, bugs, installation</p>
+      </div>
+      <div class="card red" onclick="selectCategory('securite')">
+        <i class="fas fa-shield-alt icon"></i>
+        <h3>Sécurité</h3>
+        <p>Virus, mots de passe, pare-feu</p>
+      </div>
+      <div class="card yellow" onclick="selectCategory('peripheriques')">
+        <i class="fas fa-print icon"></i>
+        <h3>Périphériques</h3>
+        <p>Imprimantes, webcams, USB</p>
+      </div>
     </section>
 
-    <!-- Sous-problèmes SYSTÈME -->
+    <!-- Sous-problèmes -->
+    <!-- CONNEXION -->
+    <section class="grid" id="sub-connexion" hidden>
+      <div class="card" onclick="showSolution('sol-wifi-off')">
+        <h3>WiFi désactivé</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-pas-reseau')">
+        <h3>Pas de réseau détecté</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-internet-lent')">
+        <h3>Internet très lent</h3>
+      </div>
+      <button class="back" onclick="goBack()">← Retour</button>
+    </section>
+
+    <!-- SYSTEME -->
     <section class="grid" id="sub-systeme" hidden>
       <div class="card" onclick="showSolution('sol-lent')">
-        <h3>💻 Mon ordinateur est très lent</h3>
+        <h3>Mon ordinateur est très lent</h3>
       </div>
       <div class="card" onclick="showSolution('sol-maj')">
-        <h3>⚠️ Les mises à jour ne se font plus</h3>
+        <h3>Les mises à jour ne se font plus</h3>
       </div>
       <div class="card" onclick="showSolution('sol-erreur')">
-        <h3>❗ Mon ordinateur affiche des messages d’erreur</h3>
+        <h3>Mon ordinateur affiche des messages d’erreur</h3>
+      </div>
+      <button class="back" onclick="goBack()">← Retour</button>
+    </section>
+
+    <!-- MATERIEL -->
+    <section class="grid" id="sub-materiel" hidden>
+      <div class="card" onclick="showSolution('sol-batterie')">
+        <h3>Batterie ne charge pas</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-ecran')">
+        <h3>Écran noir ou clignotant</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-clavier')">
+        <h3>Clavier ou souris ne répond pas</h3>
+      </div>
+      <button class="back" onclick="goBack()">← Retour</button>
+    </section>
+
+    <!-- APPLICATIONS -->
+    <section class="grid" id="sub-applications" hidden>
+      <div class="card" onclick="showSolution('sol-bug-app')">
+        <h3>Application plante au lancement</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-install-app')">
+        <h3>Impossible d’installer un logiciel</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-maj-app')">
+        <h3>Mise à jour d’application impossible</h3>
+      </div>
+      <button class="back" onclick="goBack()">← Retour</button>
+    </section>
+
+    <!-- SECURITE -->
+    <section class="grid" id="sub-securite" hidden>
+      <div class="card" onclick="showSolution('sol-virus')">
+        <h3>Virus ou malware détecté</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-mdp')">
+        <h3>Mot de passe oublié ou piraté</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-parefeu')">
+        <h3>Problème avec le pare-feu</h3>
+      </div>
+      <button class="back" onclick="goBack()">← Retour</button>
+    </section>
+
+    <!-- PERIPHERIQUES -->
+    <section class="grid" id="sub-peripheriques" hidden>
+      <div class="card" onclick="showSolution('sol-imprimante')">
+        <h3>Imprimante ne fonctionne pas</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-webcam')">
+        <h3>Webcam ne fonctionne pas</h3>
+      </div>
+      <div class="card" onclick="showSolution('sol-usb')">
+        <h3>Périphérique USB non reconnu</h3>
       </div>
       <button class="back" onclick="goBack()">← Retour</button>
     </section>
 
     <!-- Solutions -->
-    <section id="solutions">
+    <section id="solutions" hidden>
+      <!-- CONNEXION -->
+      <div class="solution" id="sol-wifi-off" hidden>
+        <h2>WiFi désactivé</h2>
+        <p>Activez le WiFi depuis les paramètres réseau de votre ordinateur.</p>
+      </div>
+      <div class="solution" id="sol-pas-reseau" hidden>
+        <h2>Pas de réseau détecté</h2>
+        <p>Redémarrez votre box Internet et vérifiez que vous êtes dans la zone de couverture.</p>
+      </div>
+      <div class="solution" id="sol-internet-lent" hidden>
+        <h2>Internet très lent</h2>
+        <p>Vérifiez les autres appareils connectés, redémarrez la box, ou contactez votre fournisseur d'accès.</p>
+      </div>
+
+      <!-- SYSTEME -->
       <div class="solution" id="sol-lent" hidden>
-        <h2>Solution : Ordinateur lent</h2>
+        <h2>Ordinateur lent</h2>
         <p>Désinstallez les programmes inutiles, vérifiez les logiciels au démarrage, faites un scan antivirus.</p>
       </div>
-
       <div class="solution" id="sol-maj" hidden>
-        <h2>Solution : Mises à jour bloquées</h2>
-        <p>Ouvrez les Paramètres → Windows Update → Rechercher des mises à jour. Essayez aussi avec l'utilitaire de résolution Windows Update.</p>
+        <h2>Mises à jour bloquées</h2>
+        <p>Ouvrez les Paramètres → Windows Update → Rechercher des mises à jour. Utilisez l'utilitaire de résolution Windows Update.</p>
       </div>
-
       <div class="solution" id="sol-erreur" hidden>
-        <h2>Solution : Messages d’erreur</h2>
-        <p>Notez le message exact. Recherchez-le en ligne ou redémarrez en mode sans échec pour diagnostiquer.</p>
+        <h2>Messages d’erreur</h2>
+        <p>Notez le message exact, recherchez-le en ligne, ou redémarrez en mode sans échec pour diagnostiquer.</p>
       </div>
 
-      <button class="back" onclick="resetAll()" hidden id="back-to-start">← Retour à l’accueil</button>
+      <!-- MATERIEL -->
+      <div class="solution" id="sol-batterie" hidden>
+        <h2>Batterie ne charge pas</h2>
+        <p>Vérifiez le câble d’alimentation, nettoyez les contacts et testez une autre prise.</p>
+      </div>
+      <div class="solution" id="sol-ecran" hidden>
+        <h2>Écran noir ou clignotant</h2>
+        <p>Testez un autre écran ou câble, vérifiez la luminosité, et redémarrez l’ordinateur.</p>
+      </div>
+      <div class="solution" id="sol-clavier" hidden>
+        <h2>Clavier ou souris ne répond pas</h2>
+        <p>Essayez de reconnecter les périphériques, changez les piles si sans fil, ou testez un autre port USB.</p>
+      </div>
+
+      <!-- APPLICATIONS -->
+      <div class="solution" id="sol-bug-app" hidden>
+        <h2>Application plante au lancement</h2>
+        <p>Réinstallez l’application, vérifiez les mises à jour et consultez la documentation du logiciel.</p>
+      </div>
+      <div class="solution" id="sol-install-app" hidden>
+        <h2>Impossible d’installer un logiciel</h2>
+        <p>Vérifiez l’espace disque, les droits administrateur, et que le fichier d’installation est intact.</p>
+      </div>
+      <div class="solution" id="sol-maj-app" hidden>
+        <h2>Mise à jour d’application impossible</h2>
+        <p>Vérifiez votre connexion internet, l’espace disque et redémarrez l’application.</p>
+      </div>
+
+      <!-- SECURITE -->
+      <div class="solution" id="sol-virus" hidden>
+        <h2>Virus ou malware détecté</h2>
+        <p>Effectuez un scan complet avec un antivirus à jour et supprimez les fichiers suspects.</p>
+      </div>
+      <div class="solution" id="sol-mdp" hidden>
+        <h2>Mot de passe oublié ou piraté</h2>
+        <p>Réinitialisez votre mot de passe via le service concerné et activez l’authentification à deux facteurs.</p>
+      </div>
+      <div class="solution" id="sol-parefeu" hidden>
+        <h2>Problème avec le pare-feu</h2>
+        <p>Vérifiez les règles du pare-feu, désactivez temporairement pour tester, puis configurez correctement.</p>
+      </div>
+
+      <!-- PERIPHERIQUES -->
+      <div class="solution" id="sol-imprimante" hidden>
+        <h2>Imprimante ne fonctionne pas</h2>
+        <p>Vérifiez les connexions, les pilotes et redémarrez l’imprimante et l’ordinateur.</p>
+      </div>
+      <div class="solution" id="sol-webcam" hidden>
+        <h2>Webcam ne fonctionne pas</h2>
+        <p>Vérifiez les permissions, les pilotes et essayez une autre application pour tester.</p>
+      </div>
+      <div class="solution" id="sol-usb" hidden>
+        <h2>Périphérique USB non reconnu</h2>
+        <p>Testez un autre port USB, redémarrez l’ordinateur, et mettez à jour les pilotes USB.</p>
+      </div>
+
+      <button class="back" onclick="resetAll()">← Retour à l’accueil</button>
     </section>
   </main>
 
