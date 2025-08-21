@@ -4,54 +4,89 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Assistance Informatique</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <h1>Assistance Informatique</h1>
+    <p>Comment puis-je vous aider aujourd’hui ?</p>
   </header>
 
   <main>
-    <section id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Questions fréquentes</h2>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
-          Comment réinitialiser mon mot de passe ?
-        </button>
-        <div id="faq1" class="faq-answer" role="region" aria-hidden="true">
-          Cliquez sur « Mot de passe oublié » sur la page de connexion pour en générer un nouveau.
+    <section aria-labelledby="problemes-heading">
+      <h2 id="problemes-heading">Choisissez votre problème</h2>
+      <div class="grid">
+        <div class="card teal">
+          <i class="fas fa-lock icon"></i>
+          <h3>Connexion</h3>
+          <p>Problèmes de mot de passe, WiFi, Internet</p>
+        </div>
+        <div class="card red">
+          <i class="fas fa-desktop icon"></i>
+          <h3>Système</h3>
+          <p>Démarrage, mises à jour, erreurs</p>
+        </div>
+        <div class="card yellow">
+          <i class="fas fa-tools icon"></i>
+          <h3>Matériel</h3>
+          <p>Batterie, écran, clavier</p>
+        </div>
+        <div class="card teal">
+          <i class="fas fa-th-large icon"></i>
+          <h3>Applications</h3>
+          <p>Logiciels, installations</p>
+        </div>
+        <div class="card red">
+          <i class="fas fa-shield-alt icon"></i>
+          <h3>Sécurité</h3>
+          <p>Virus, données, confidentialité</p>
+        </div>
+        <div class="card yellow">
+          <i class="fas fa-print icon"></i>
+          <h3>Périphériques</h3>
+          <p>Imprimantes, scanners</p>
         </div>
       </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
-          Comment installer un antivirus ?
-        </button>
-        <div id="faq2" class="faq-answer" role="region" aria-hidden="true">
-          Nous recommandons d’installer un antivirus depuis notre lien officiel ou un magasin d’applications de confiance.
-        </div>
-      </div>
-
-      <!-- Ajoutez d'autres questions ici -->
     </section>
 
-    <button id="open-modal" class="assist-button">Besoin d’aide personnalisée ?</button>
-
-    <div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
-      <div class="modal-content">
-        <h3 id="modal-title">Aide personnalisée</h3>
-        <p>Indiquez votre problème ci‑dessous :</p>
-        <textarea id="modal-input" rows="4" placeholder="Décrivez votre problème ici..."></textarea>
-        <button id="close-modal">Envoyer</button>
+    <section>
+      <h2>Problèmes les plus courants</h2>
+      <div class="common-issues">
+        <div class="issue white teal-icon">
+          <i class="fas fa-wifi"></i>
+          <div>
+            <strong>Je n’arrive pas à me connecter au WiFi</strong>
+            <p>Problème de connexion réseau</p>
+          </div>
+        </div>
+        <div class="issue white red-icon">
+          <i class="fas fa-battery-half"></i>
+          <div>
+            <strong>J’ai un problème de batterie</strong>
+            <p>Ma batterie se décharge trop vite</p>
+          </div>
+        </div>
+        <div class="issue white yellow-icon">
+          <i class="fas fa-tachometer-alt"></i>
+          <div>
+            <strong>Mon ordinateur est très lent</strong>
+            <p>Problème de performance</p>
+          </div>
+        </div>
+        <div class="issue white teal-icon">
+          <i class="fas fa-print"></i>
+          <div>
+            <strong>Mon imprimante ne fonctionne pas</strong>
+            <p>Problème de périphérique</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Assistance Informatique</p>
+    <p>&copy; 2025 Assistance Informatique — Tous droits réservés</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
