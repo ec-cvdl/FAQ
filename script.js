@@ -1,33 +1,45 @@
-function showQuestion(id) {
-  document.querySelectorAll('.question, .solution').forEach(el => el.hidden = true);
-  document.getElementById(id).hidden = false;
-}
-
-function showSolution(id) {
-  document.querySelectorAll('.question, .solution').forEach(el => el.hidden = true);
-  document.getElementById(id).hidden = false;
-}
-
 function selectCategory(category) {
   document.getElementById("main-categories").hidden = true;
+  hideAllSubCategories();
+  hideAllSolutions();
 
-  // Affiche les sous-problèmes
-  const sub = document.getElementById("sub-" + category);
-  if (sub) sub.hidden = false;
+  const subSection = document.getElementById("sub-" + category);
+  if (subSection) {
+    subSection.hidden = false;
+  }
 }
 
-function showSolution(id) {
-  document.querySelectorAll("section").forEach(s => s.hidden = true);
-  document.getElementById(id).hidden = false;
-  document.getElementById("back-to-start").hidden = false;
+function showSolution(solutionId) {
+  hideAllSubCategories();
+  hideAllSolutions();
+
+  const solution = document.getElementById(solutionId);
+  if (solution) {
+    solution.hidden = false;
+    document.getElementById("solutions").hidden = false;
+  }
 }
 
 function goBack() {
-  document.querySelectorAll("section").forEach(s => s.hidden = true);
+  hideAllSubCategories();
+  hideAllSolutions();
+
   document.getElementById("main-categories").hidden = false;
+  document.getElementById("solutions").hidden = true;
 }
 
 function resetAll() {
-  document.querySelectorAll("section").forEach(s => s.hidden = true);
+  hideAllSubCategories();
+  hideAllSolutions();
+
   document.getElementById("main-categories").hidden = false;
+  document.getElementById("solutions").hidden = true;
+}
+
+function hideAllSubCategories() {
+  document.querySelectorAll("section[id^='sub-']").forEach(s => s.hidden = true);
+}
+
+function hideAllSolutions() {
+  document.querySelectorAll(".solution").forEach(s => s.hidden = true);
 }
