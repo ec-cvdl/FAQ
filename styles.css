@@ -1,66 +1,98 @@
+:root {
+  --teal: #00bfb3;
+  --red: #ef476f;
+  --yellow: #ffc107;
+  --light: #f8f9fa;
+  --dark: #222;
+  --radius: 10px;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 0 1rem;
+  background: #f5f5f5;
+  color: var(--dark);
 }
-header, footer {
+
+header {
   text-align: center;
-  padding: 1rem 0;
-  background: #f0f0f0;
+  padding: 2rem 1rem 1rem;
 }
-.faq-item {
-  margin: 0.5rem 0;
+header h1 {
+  color: var(--teal);
+  margin: 0;
 }
-.faq-question {
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem;
-  background: #e0e0e0;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
+
+main {
+  padding: 1rem;
+  max-width: 1000px;
+  margin: auto;
 }
-.faq-question:focus {
-  outline: 3px solid #005fcc;
+
+h2 {
+  text-align: center;
+  margin-top: 2rem;
 }
-.faq-answer {
-  padding: 0.75rem;
-  border-left: 3px solid #005fcc;
-  background: #f9f9f9;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
-.assist-button {
-  display: block;
-  margin: 2rem auto;
-  padding: 0.75rem 1.5rem;
-  background: #005fcc;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-}
-.assist-button:focus {
-  outline: 3px solid #ffbf47;
-}
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-content {
+
+.card {
   background: white;
   padding: 1rem;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 4px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
 }
-#modal-input {
-  width: 100%;
-  margin: 0.5rem 0;
+.card h3 {
+  margin-top: 0.5rem;
+}
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.teal .icon { color: var(--teal); border-top: 5px solid var(--teal); }
+.red .icon { color: var(--red); border-top: 5px solid var(--red); }
+.yellow .icon { color: var(--yellow); border-top: 5px solid var(--yellow); }
+
+.common-issues {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.issue {
+  display: flex;
+  align-items: flex-start;
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  gap: 1rem;
+}
+
+.issue i {
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+}
+
+.teal-icon i { color: var(--teal); }
+.red-icon i { color: var(--red); }
+.yellow-icon i { color: var(--yellow); }
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
 }
