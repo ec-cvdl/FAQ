@@ -14,6 +14,51 @@
   </header>
 
   <main>
+    <section id="assistant">
+  <h2>Assistant de Diagnostic</h2>
+
+  <div class="question" id="q1">
+    <p>Quel est votre type de problème ?</p>
+    <button onclick="showQuestion('q2')">Connexion</button>
+    <button onclick="showQuestion('q3')">Matériel</button>
+  </div>
+
+  <div class="question" id="q2" hidden>
+    <p>Votre WiFi est-il activé ?</p>
+    <button onclick="showSolution('sol1')">Non</button>
+    <button onclick="showQuestion('q4')">Oui</button>
+  </div>
+
+  <div class="question" id="q3" hidden>
+    <p>Quel matériel pose problème ?</p>
+    <button onclick="showSolution('sol2')">Imprimante</button>
+    <button onclick="showSolution('sol3')">Écran</button>
+  </div>
+
+  <div class="question" id="q4" hidden>
+    <p>Le WiFi détecte-t-il des réseaux ?</p>
+    <button onclick="showSolution('sol4')">Non</button>
+    <button onclick="showSolution('sol5')">Oui</button>
+  </div>
+
+  <!-- Solutions -->
+  <div class="solution" id="sol1" hidden>
+    <p><strong>Solution :</strong> Activez le WiFi depuis les paramètres réseau.</p>
+  </div>
+  <div class="solution" id="sol2" hidden>
+    <p><strong>Solution :</strong> Vérifiez que l’imprimante est bien connectée et allumée.</p>
+  </div>
+  <div class="solution" id="sol3" hidden>
+    <p><strong>Solution :</strong> Vérifiez le câble ou la luminosité de l’écran.</p>
+  </div>
+  <div class="solution" id="sol4" hidden>
+    <p><strong>Solution :</strong> Redémarrez votre box Internet.</p>
+  </div>
+  <div class="solution" id="sol5" hidden>
+    <p><strong>Solution :</strong> Essayez de vous connecter manuellement avec le mot de passe WiFi.</p>
+  </div>
+</section>
+
     <section aria-labelledby="problemes-heading">
       <h2 id="problemes-heading">Choisissez votre problème</h2>
       <div class="grid">
